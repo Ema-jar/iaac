@@ -17,3 +17,5 @@ For autoscaling group I've chosen the following size in order to speed up the pr
 MinSize: '1'
 MaxSize: '2'
 ```
+
+You will probably have to create your own key inside your AWS account following this format: `KeyName: EmaJarKey`
