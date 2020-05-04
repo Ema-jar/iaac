@@ -100,9 +100,11 @@ Resources:
                     apt-get install apache2 -y
                     systemctl start apache2.service
                     cd /var/www/html
-                    aws s3 cp s3://udacity-demo-1/udacity.zip .
+                    aws s3 cp s3://udacity-demo-1/udacity.zip ./
                     unzip -o udacity.zip
             ImageId: ami-003634241a8fcdec0
+            KeyName: EmaJarKey
+            IamInstanceProfile: !Ref ProfileWithRolesForOurApp
             SecurityGroups:
                 - Ref: WebServerSecurityGroup
             InstanceType: t3.medium
@@ -119,8 +121,8 @@ Resources:
                 !Sub "${EnvironmentName}-PRIV-NETS"
             LaunchConfigurationName:
                 Ref: WebAppLaunchConfig
-            MinSize: '3'
-            MaxSize: '5'
+            MinSize: '1'
+            MaxSize: '2'
             TargetGroupARNs:
             - Ref: WebAppTargetGroup
 
@@ -172,7 +174,12 @@ Resources:
             ListenerArn: !Ref 'Listener'
             Priority: 1
 
-    
+Outputs:
+    WebAppLoadBalancerDNSName:
+        Description: Expose human readable URL
+        Value: !Join [ "", [ 'http://', !GetAtt WebAppLoadBalancer.DNSName ]]
+        Export:
+            Name: !Sub ${EnvironmentName}-LB-DNSName
 
     
 
