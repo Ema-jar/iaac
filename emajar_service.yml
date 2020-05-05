@@ -1,6 +1,6 @@
 Description: >
-    Author: Emanuele Giarlini
-    This template is used to create resources like  LoadBalancer, Launch Configuration, AutoScaling group a health check, security groups and a Listener and Target Group.
+    Author: Emanuele Giarlini -
+    This template is used to create resources like LoadBalancer, Launch Configuration, AutoScaling group a health check, security groups and a Listener and Target Group.
 
 Parameters:
     EnvironmentName:
