@@ -1,5 +1,5 @@
 Description: >
-    Author: Emanuele Giarlini
+    Author: Emanuele Giarlini - 
     This template is the same I have developed while following the course lessons.
     It basically creates two different subnets, one is public and one is private, those subnets are
     distributed across two availability zones (AZ1 and AZ2).
